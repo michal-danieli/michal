@@ -25,32 +25,26 @@ class LoginPage extends React.Component {
     }
 
     login = () => {
-        axios.get("http://127.0.0.1:8989/sign_in",{
+        axios.get("http://127.0.0.1:8989/get-token",{
             params:{
                 username:this.state.username,
                 password:this.state.password
             }
         })
             .then((response)=>{
-                if (response.data == "username") {
+                if (response.data == "usernameDoesntExist") {
                     this.setState({
                         showError:"The user does not exist "
                     })
                 }else {
-                    if (response.data == "password") {
+                    if (response.data == "passwordIncorrect") {
                         this.setState({
                             showError:"The password is incorrect"
                         })
                     } else {
-                        if(response.data == "block"){
-                            this.setState({
-                                showError:"This user that call - ' "+ this.state.username +" ', was block after more then 5 uncorrected attempts , Please contact your system administrator"
-                            })
-                        }else {
-                            const cookies = new Cookies();
-                            cookies.set("logged_in", response.data);
-                            window.location.reload();
-                        }
+                        const cookies = new Cookies();
+                        cookies.set("logged_in", response.data);
+                        window.location.reload();
                     }
                 }
             })
@@ -75,7 +69,7 @@ class LoginPage extends React.Component {
                        placeholder={"Enter password"}
                 />
                 <button className={"button"} onClick={this.login}>Login</button>
-                <div className={"showEror"}>
+                <div className={"showError"}>
                     {
                         this.state.showError
                     }

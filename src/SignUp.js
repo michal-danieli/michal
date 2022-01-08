@@ -7,7 +7,8 @@ class SignUp extends React.Component {
     state = {
         username: "",
         password: "",
-        showError: ""
+        showError: "",
+        success: false
     }
 
     onUsernameChange = (e) => {
@@ -24,16 +25,15 @@ class SignUp extends React.Component {
     }
 
     SignUp = () => {
-        axios.get("http://localhost:8989/create_account", {
-            params: {
-                username: this.state.username,
-                password: this.state.password
-            }
-        })
+        let data = new FormData();
+        data.append("username", this.state.username)
+        data.append("password", this.state.password)
+        axios.post("http://localhost:8989/create-account", data)
             .then((response) => {
-                if (response.data) {
+                if (response.data && response.data!= "usernameExist") {
                     this.setState({
-                        showError: "the user create, now go to login in our site!"
+                        showError: "the user create, now go to login in our site!",
+                        success: true
                     })
                     const cookies = new Cookies();
                     cookies.set("logged_in", response.data);
@@ -47,10 +47,6 @@ class SignUp extends React.Component {
     }
 
 
-
-    isNumeric = (text) => {
-        return !isNaN(text);
-    }
 
     render() {
         return (
@@ -69,9 +65,11 @@ class SignUp extends React.Component {
                            value={this.state.password}
                            placeholder={"Enter password"}
                     />
-                    <button className={"button"} onClick={this.SignUp}>sign-up</button>
+                    {/*<NavLink to={"/Settings"} className={"link"} activeClassName={"active"}>*/}
+                        <button className={"button"} onClick={this.SignUp}>sign-up</button>
+                    {/*</NavLink>*/}
                 </div>
-                <div className={"showEror"}>
+                <div className={"showError"}>
                     {this.state.showError}
                 </div>
                 <div>

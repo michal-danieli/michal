@@ -10,6 +10,7 @@ import Search from "./Search";
 import Settings from "./Settings";
 import StoresList from "./StoresList";
 import axios from "axios";
+import SignUp from "./SignUp";
 
 class App extends React.Component {
 
@@ -45,20 +46,19 @@ class App extends React.Component {
           <BrowserRouter>
             {
               this.state.isLoggedIn ?
-                  this.state.newUser?
-                      <Route path={"/"} component={Settings}/>
-                      :
-                      <div style={{display: "flex", alignItems: "start", marginTop: "50px"}}>
-                        <NavigationBar/>
-                        <Route path={"/"} component={HomePage} exact={true}/>
-                        <Route path={"/home-page"} component={HomePage} exact={true}/>
-                        <Route path={"/stores-List"} component={StoresList} exact={true}/>
-                        <Route path={"/search"} component={Search} exact={true}/>
-                        <Route path={"/settings"} component={Settings} exact={true}/>
-                      </div>
+                  <div style={{display: "flex", alignItems: "start", marginTop: "50px"}}>
+                    <NavigationBar/>
+                    <Route path={"/"} component={HomePage} exact={true}/>
+                    <Route path={"/home-page"} component={HomePage} exact={true}/>
+                    <Route path={"/stores-List"} component={StoresList} exact={true}/>
+                    <Route path={"/search"} component={Search} exact={true}/>
+                    <Route path={"/settings"} component={Settings} exact={true}/>
+                    <Route path={"/SignUp"} component={SignUp} exact={true}/>
+                  </div>
                   :
                   <div>
-                    <Route path={"/"} component={HomePage}/>
+                    <Route path={"/"} component={LoginPage} exact={true}/>
+                    <Route path={"/SignUp"} component={SignUp} exact={true}/>
                   </div>
             }
           </BrowserRouter>
