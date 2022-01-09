@@ -5,15 +5,11 @@ import axios from "axios";
 
 class Shop extends React.Component {
     state = {
-        id: 0,
+        id: this.props.match.params.id,
         sales : [],
-        shop:{}
+        shop:[]
     }
     componentDidMount() {
-        const id =this.props.match.params.id;
-        this.setState({
-            id:id
-        })
         this.getShopById()
         this.getAllSalesOfShop()
     }
@@ -59,11 +55,6 @@ class Shop extends React.Component {
                 {
                     this.state.shop.name
                 }
-                <p>
-                    {
-                        this.state.id
-                    }
-                </p>
                 {
                     this.state.sales.map(sale =>{
                         return(
