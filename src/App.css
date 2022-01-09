@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.shop{
+  background-color: aliceblue;
+  align-items: center;
+  width: max-content;
+  border-width:2px;
+  padding:1px 5px;
+  margin: 10px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

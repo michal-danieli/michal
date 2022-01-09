@@ -11,33 +11,47 @@ import Settings from "./Settings";
 import StoresList from "./StoresList";
 import axios from "axios";
 import SignUp from "./SignUp";
+import Shop from "./Shop";
 
 class App extends React.Component {
 
   state = {
     isLoggedIn: false,
-    token : "",
-    newUser: false
-}
+    token: "",
+    newUser: false,
+    shopList: []
+  }
 
   componentDidMount() {
     const cookies = new Cookies();
     if (cookies.get("logged_in")) {
       this.setState({
         isLoggedIn: true,
-        token : cookies.get("logged_in")
+        token: cookies.get("logged_in")
       })
     }
 
-    axios.get("http://127.0.0.1:8989/check_if_new_user",{
-      params:{
-        username:this.state.username
-      }
-    }).then((response) => {
-      this.setState({
-        newUser: response.data
-      })
-    })
+    this.getAllStores()
+
+    // axios.get("http://127.0.0.1:8989/check_if_new_user",{
+    //   params:{
+    //     username:this.state.username
+    //   }
+    // }).then((response) => {
+    //   this.setState({
+    //     newUser: response.data
+    //   })
+    // })
+  }
+
+  getAllStores = () => {
+    axios.get("http://localhost:8989/getAllShops")
+        .then((response) => {
+          let shopList = response.data
+          this.setState({
+            shopList: shopList
+          })
+        })
   }
 
   render() {
@@ -54,6 +68,7 @@ class App extends React.Component {
                     <Route path={"/search"} component={Search} exact={true}/>
                     <Route path={"/settings"} component={Settings} exact={true}/>
                     <Route path={"/SignUp"} component={SignUp} exact={true}/>
+                    <Route path={"/stores-List/:id"} component= {Shop} exact= {true}/>
                   </div>
                   :
                   <div>

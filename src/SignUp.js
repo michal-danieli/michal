@@ -37,7 +37,7 @@ class SignUp extends React.Component {
                     })
                     const cookies = new Cookies();
                     cookies.set("logged_in", response.data);
-                    window.location.reload();
+                    window.location.replace("http://localhost:3001/Settings")
                 } else {
                     this.setState({
                         showError: "the username exist - change your username!"

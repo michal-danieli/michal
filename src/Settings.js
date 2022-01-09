@@ -5,7 +5,13 @@ import axios from "axios";
 
 class Settings extends React.Component {
     state = {
-        organ:  ["Hever", "Histadrut a morim", "Eirgon a morim"]
+        organ:  [],
+        organOfUser: []
+    }
+
+    componentDidMount() {
+        this.getAllOrganization()
+        this.getOrganizationOfUser()
     }
 
     onBoxClick = (e) =>{
@@ -15,7 +21,52 @@ class Settings extends React.Component {
         data.append("organizationName", e.target.value)
         axios.post("http://localhost:8989/edit-user-to-organization",data )
             .then((response) =>{
+                this.getOrganizationOfUser()
+            })
+    }
+
+    getOrganizationOfUser=()=>{
+        const cookies = new Cookies();
+        axios.get("http://localhost:8989/get-all-organizations-of-user", {
+            params:{
+                token: cookies.get("logged_in")
+            }
+        })
+            .then((response) =>{
+                let organizationOfUser = response.data
+                this.setState({
+                    organOfUser:organizationOfUser
                 })
+            })
+    }
+
+    getAllOrganization=()=>{
+        axios.get("http://localhost:8989/get-all-organizations")
+            .then((response) =>{
+                let organization = response.data
+                this.setState({
+                    organ:organization
+                })
+            })
+    }
+
+    checkIfUserConnectToOrganization=(organization)=>{
+        let connect = false
+        this.state.organOfUser.map((org)=>{
+            return(
+                <div>
+                    {
+                        org.organizationName == organization  &&
+                            <div>
+                                {
+                                    connect = true
+                                }
+                            </div>
+                    }
+                </div>
+            )
+        })
+        return connect
     }
 
 
@@ -29,8 +80,8 @@ class Settings extends React.Component {
                         this.state.organ.map((org) => {
                             return (
                                 <div>
-                                    <input type="checkbox" id={org} name="interest" value={org} onClick={this.onBoxClick} />
-                                    <label htmlFor="coding" >{org}</label>
+                                    <input type="checkbox" id={org} name="interest" checked={this.checkIfUserConnectToOrganization(org.organizationName)} value={org.organizationName} onClick={this.onBoxClick} />
+                                    <label htmlFor="coding" >{org.organizationName}</label>
                                 </div>
                             )
                         })
