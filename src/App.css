@@ -45,3 +45,13 @@
     transform: rotate(360deg);
   }
 }
+.green{
+  font-family: "Zilla Slab SemiBold";
+  color: green;
+}
+
+
+.red{
+  font-family: "Zilla Slab SemiBold";
+  color: red;
+}

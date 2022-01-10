@@ -18,7 +18,7 @@ class Settings extends React.Component {
         const cookies = new Cookies();
         let data = new FormData();
         data.append("token", cookies.get("logged_in"))
-        data.append("organizationName", e.target.value)
+        data.append("organizationId", parseInt(e.target.value))
         axios.post("http://localhost:8989/edit-user-to-organization",data )
             .then((response) =>{
                 this.getOrganizationOfUser()
@@ -56,7 +56,7 @@ class Settings extends React.Component {
             return(
                 <div>
                     {
-                        org.organizationName == organization  &&
+                        org.id == organization  &&
                             <div>
                                 {
                                     connect = true
@@ -80,7 +80,7 @@ class Settings extends React.Component {
                         this.state.organ.map((org) => {
                             return (
                                 <div>
-                                    <input type="checkbox" id={org} name="interest" checked={this.checkIfUserConnectToOrganization(org.organizationName)} value={org.organizationName} onClick={this.onBoxClick} />
+                                    <input type="checkbox" id={org} name="interest" checked={this.checkIfUserConnectToOrganization(org.id)} value={org.id} onClick={this.onBoxClick} />
                                     <label htmlFor="coding" >{org.organizationName}</label>
                                 </div>
                             )

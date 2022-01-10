@@ -37,6 +37,9 @@ class homePage extends React.Component {
                             return(
                                 <div>
                                     shop: {sale.shop.name}
+                                    <div>
+
+                                    </div>
                                     description: {sale.description}
                                 </div>
                             )

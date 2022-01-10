@@ -47,11 +47,9 @@ class Shop extends React.Component {
     render() {
         return (
             <div>
-                this is the shop page
-                <div>
-                    shop name:
-                </div>
                 <p></p>
+                shop name:
+                <p> </p>
                 {
                     this.state.shop.name
                 }
