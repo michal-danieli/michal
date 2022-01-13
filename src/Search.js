@@ -2,6 +2,7 @@ import './App.css';
 import * as React from "react";
 import Cookies from "universal-cookie/es6";
 import axios from "axios";
+import SaleComponent from "./SaleComponent";
 
 class search extends React.Component {
     state = {
@@ -74,17 +75,19 @@ class search extends React.Component {
     render() {
         return (
             <div>
-                this is the search page please find your sale
-                <input value={this.state.searchValue} onChange={this.onChangeSearch}/>
+                <div>
+                    <text className={"searchTitle"}>
+                        Search:
+                    </text>
+                    <text className={"searchBar"}>
+                        {" "}<input value={this.state.searchValue} onChange={this.onChangeSearch}/>
+                    </text>
+                </div>
                 {
                     this.state.sales.map(sale => {
                         return (
-                            <div className={this.checkUserToSale(sale.id) ? 'green' : 'red'}>
-                                {sale.shop.name}
-                                <p></p>
-                                {sale.name}
-                                <p></p>
-                                {sale.description}
+                            <div>
+                                <SaleComponent sale={sale} class={this.checkUserToSale(sale.id) ? "saleGreen" : "saleRed"}/>
                             </div>
                         )
                     })

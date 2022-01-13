@@ -2,7 +2,7 @@
 
 function SaleComponent(prop){
     return(
-        <div className={"sale"}>
+        <div className={prop.class}>
             <div className={"saleDescription"}>
                     {prop.sale.description}
             </div>

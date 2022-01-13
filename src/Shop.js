@@ -48,16 +48,13 @@ class Shop extends React.Component {
     render() {
         return (
             <div>
-                <p></p>
-                shop name:
-                <p> </p>
-                {
-                    this.state.shop.name
-                }
+                <text className={"shopName"}>
+                    {this.state.shop.name}
+                </text>
                 {
                     this.state.sales.map(sale =>{
                         return(
-                            <SaleComponent shopName={sale.shop.name} saleDescription = {sale.description}/>
+                            <SaleComponent sale={sale}/>
 
                         )
                     })

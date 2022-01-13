@@ -31,9 +31,25 @@ body{
   border-bottom: double;
 }
 
-.sale{
+.saleGreen{
+  color: green;
   margin: 10px;
   border: 3px solid green;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.saleRed{
+  color: red;
+  margin: 10px;
+  border: 3px solid red;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.sale{
+  margin: 10px;
+  border: 3px solid blue;
   border-radius: 15px;
   padding: 5px;
 }
@@ -45,7 +61,7 @@ body{
 .saleDescription{
   font-size: 20px;
   font-weight: bold;
-  color: red;
+  font-weight: bold;
 }
 
 .shopLink{
@@ -86,6 +102,16 @@ body{
   text-align: left;
 }
 
+.searchTitle{
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 2px black inset;
+}
+
+.searchBar{
+  font-size: 25px;
+  font-weight: initial;
+}
 
 
 

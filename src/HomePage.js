@@ -43,7 +43,7 @@ class homePage extends React.Component {
                                         <text className={"shopName"}>
                                             {sale.shop.name}
                                         </text>
-                                        <SaleComponent sale = {sale}/>
+                                        <SaleComponent sale = {sale} class={"sale"}/>
                                     </div>
                                 </div>
                             )
