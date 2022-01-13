@@ -36,12 +36,15 @@ class storesList extends React.Component {
     render() {
         return (
             <div>
-                this is the shop list page
+                <div className={"componentTitle"}>
+                    Shop List
+                </div>
+
                 {
                     this.state.shopList.map(shop =>{
                         return(
                             <NavLink to={"stores-List/" + shop.id} className={"link"} activeClassName={"active"}>
-                                <div className={"shop"}>
+                                <div className={"shopLink"}>
                                     {shop.name}
                                 </div>
                             </NavLink>

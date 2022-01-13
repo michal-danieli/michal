@@ -1,3 +1,105 @@
+.title{
+  font-size: 40px;
+  border-bottom: 2px solid;
+}
+
+.button{
+  font-size:20px;
+  color: aqua;
+  background-color: green;
+  border-radius: 10px;
+}
+
+body{
+  text-align: center;
+}
+
+.componentTitle{
+  text-align: left;
+  font-size: 30px;
+  border: black;
+  border-bottom: 2px solid;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.shopName{
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 2px black;
+  border-bottom: double;
+}
+
+.sale{
+  margin: 10px;
+  border: 3px solid green;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.saleTitles{
+  font-weight: bold;
+}
+
+.saleDescription{
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.shopLink{
+  font-size: 20px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.navigationBar{
+  margin-right: 20px;
+  margin-left: 20px;
+  border-right: 2px solid;
+  padding-right: 20px;
+  margin-top: 50px;
+}
+
+.navigationLink{
+  border: 2px black solid;
+  margin: 15px;
+  color:blue;
+  background-color: beige;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.logoutLink{
+  border: 2px black solid;
+  margin-top: 15px;
+  color:red;
+  background-color: beige;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 3px;
+  border-radius: 0px;
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .App {
   text-align: center;
 }

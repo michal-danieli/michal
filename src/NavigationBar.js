@@ -16,16 +16,13 @@ class NavigationBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className={"title"}>
-                    Navigation Bar
-                </div>
+            <div className={"navigationBar"}>
                 <ul>
                     {
                         this.state.links.map(link => {
                             return (
-                                <NavLink to={link.path} className={"link"} activeClassName={"active"}>
-                                    <li>
+                                <NavLink to={link.path}  activeClassName={"active"}>
+                                    <li className={"navigationLink"}>
                                         {link.title}
                                     </li>
                                 </NavLink>
@@ -34,7 +31,7 @@ class NavigationBar extends React.Component {
                     }
 
                     <li onClick={this.logout}>
-                        <NavLink to={"/"} className={"link"} activeClassName={"active"}>
+                        <NavLink to={"/"} className={"logoutLink"} activeClassName={"active"}>
                             Logout
                         </NavLink>
                     </li>

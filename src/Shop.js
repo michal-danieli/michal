@@ -2,6 +2,7 @@ import './App.css';
 import * as React from "react";
 import Cookies from "universal-cookie/es6";
 import axios from "axios";
+import SaleComponent from "./SaleComponent";
 
 class Shop extends React.Component {
     state = {
@@ -56,11 +57,8 @@ class Shop extends React.Component {
                 {
                     this.state.sales.map(sale =>{
                         return(
-                            <div>
-                                {sale.name}
-                                <p></p>
-                                {sale.description}
-                            </div>
+                            <SaleComponent shopName={sale.shop.name} saleDescription = {sale.description}/>
+
                         )
                     })
                 }
