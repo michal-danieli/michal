@@ -2,6 +2,7 @@ import './App.css';
 import * as React from "react";
 import Cookies from "universal-cookie/es6";
 import axios from "axios";
+import SaleComponent from "./SaleComponent";
 
 class homePage extends React.Component {
     state = {
@@ -30,14 +31,20 @@ class homePage extends React.Component {
     render() {
         return (
             <div>
-                this is the home page
+                <div className={"title"}>
+                    Home Page
+                </div>
                 <div>
                     {
                         this.state.sales.map(sale =>{
                             return(
                                 <div>
-                                    shop: {sale.shop.name}
-                                    description: {sale.description}
+                                    <div>
+                                        <text className={"shopName"}>
+                                            {sale.shop.name}
+                                        </text>
+                                        <SaleComponent sale = {sale}/>
+                                    </div>
                                 </div>
                             )
                           }
