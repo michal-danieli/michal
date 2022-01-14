@@ -19,7 +19,8 @@ class App extends React.Component {
     isLoggedIn: false,
     token: "",
     newUser: false,
-    shopList: []
+    shopList: [],
+    messageFromServer : ""
   }
 
   componentDidMount() {
@@ -29,19 +30,17 @@ class App extends React.Component {
         isLoggedIn: true,
         token: cookies.get("logged_in")
       })
+
     }
 
+    const ws = new WebSocket("ws://localhost:8989/stream?token=" + this.state.token + "&o=7791");
+    ws.onmessage = (message) =>{
+        let data = JSON.parse(message.data)
+        this.setState({
+            messageFromServer : data
+        })
+    }
     this.getAllStores()
-
-    // axios.get("http://127.0.0.1:8989/check_if_new_user",{
-    //   params:{
-    //     username:this.state.username
-    //   }
-    // }).then((response) => {
-    //   this.setState({
-    //     newUser: response.data
-    //   })
-    // })
   }
 
   getAllStores = () => {
@@ -77,6 +76,10 @@ class App extends React.Component {
                   </div>
             }
           </BrowserRouter>
+            <div>
+                message from server:
+            </div>
+            {this.state.messageFromServer}
         </div>
     )
   }
