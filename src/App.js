@@ -20,7 +20,8 @@ class App extends React.Component {
     token: "",
     newUser: false,
     shopList: [],
-    messageFromServer : ""
+    messageFromServer : "",
+    messageFromServer2: ""
   }
 
   componentDidMount() {
@@ -33,11 +34,12 @@ class App extends React.Component {
 
     }
 
-    const ws = new WebSocket("ws://localhost:8989/stream?token=" + this.state.token + "&o=7791");
+    const ws = new WebSocket("ws://localhost:8989/stream?token="+this.state.token);
     ws.onmessage = (message) =>{
-        let data = JSON.parse(message.data)
+        const data = JSON.parse(message.data)
         this.setState({
-            messageFromServer : data
+            messageFromServer : data.start,
+            messageFromServer2 : data.end.value
         })
     }
     this.getAllStores()
@@ -78,8 +80,10 @@ class App extends React.Component {
           </BrowserRouter>
             <div>
                 message from server:
+                {this.state.messageFromServer}
+                {this.state.messageFromServer2}
             </div>
-            {this.state.messageFromServer}
+
         </div>
     )
   }
