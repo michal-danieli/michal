@@ -31,7 +31,7 @@ class homePage extends React.Component {
     render() {
         return (
             <div>
-                <div className={"title"}>
+                <div className={"componentTitle"}>
                     Home Page
                 </div>
                 <div>
@@ -39,7 +39,7 @@ class homePage extends React.Component {
                         this.state.sales.map(sale =>{
                             return(
                                 <div>
-                                    <div>
+                                    <div className={"homePageSale"}>
                                         <text className={"shopName"}>
                                             {sale.shop.name}
                                         </text>

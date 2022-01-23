@@ -76,17 +76,21 @@ class search extends React.Component {
         return (
             <div>
                 <div>
-                    <text className={"searchTitle"}>
+                    <text className={"componentTitle"}>
                         Search:
                     </text>
                     <text className={"searchBar"}>
                         {" "}<input value={this.state.searchValue} onChange={this.onChangeSearch}/>
                     </text>
                 </div>
+                <p style= {{ color: "red", margin: "30px" }}></p>
                 {
                     this.state.sales.map(sale => {
                         return (
-                            <div>
+                            <div className={""}>
+                                <text className={"shopName"}>
+                                    {sale.shop.name}
+                                </text>
                                 <SaleComponent sale={sale} class={this.checkUserToSale(sale.id) ? "saleGreen" : "saleRed"}/>
                             </div>
                         )

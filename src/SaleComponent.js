@@ -8,18 +8,18 @@ function SaleComponent(prop){
             </div>
             <div>
                 <text className={"saleTitles"}>
-                    Start time:
+                    Start time:{" "}
                 </text>
                 <text>
-                    {prop.sale.startTime}
+                    {new Date(prop.sale.startTime).toDateString()}
                 </text>
             </div>
             <div>
                 <text className={"saleTitles"}>
-                    End time:
+                    End time:{" "}
                 </text>
                 <text>
-                    {prop.sale.endTime}
+                    {new Date(prop.sale.endTime).toDateString()}
                 </text>
             </div>
         </div>

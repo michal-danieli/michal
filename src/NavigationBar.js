@@ -29,7 +29,7 @@ class NavigationBar extends React.Component {
                             )
                         })
                     }
-
+                    <p style= {{ color: "red", margin: "50px" }}></p>
                     <li onClick={this.logout}>
                         <NavLink to={"/"} className={"logoutLink"} activeClassName={"active"}>
                             Logout

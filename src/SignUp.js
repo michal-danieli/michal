@@ -50,17 +50,17 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div >
+            <div className={"loginAndSignIn"}>
                 <div className={"title"}>
-                    Enter password and userName to sign-up
+                    Enter Password & Username to sign-up
                 </div>
                 <div >
-                    <input className={"button"}
+                    <input className={"input"}
                            onChange={this.onUsernameChange}
                            value={this.state.username}
                            placeholder={"Enter username"}
                     />
-                    <input className={"button"}
+                    <input className={"input"}
                            onChange={this.onPasswordChange}
                            value={this.state.password}
                            placeholder={"Enter password"}

@@ -73,13 +73,15 @@ class Settings extends React.Component {
     render() {
         return (
             <div>
-                this is the settings page
+                <div className={"componentTitle"}>
+                    Settings Page
+                </div>
                 <fieldset>
-                    <legend>Select the organizations of which you are friends</legend>
+                    <legend className={"organizations"}>Select the organizations of which you are friends</legend>
                     {
                         this.state.organ.map((org) => {
                             return (
-                                <div>
+                                <div className={"organization"}>
                                     <input type="checkbox" id={org} name="interest" checked={this.checkIfUserConnectToOrganization(org.id)} value={org.id} onClick={this.onBoxClick} />
                                     <label htmlFor="coding" >{org.organizationName}</label>
                                 </div>

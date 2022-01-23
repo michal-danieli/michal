@@ -62,7 +62,7 @@ class App extends React.Component {
 
   render() {
     return (
-        <div>
+        <div className={"main"}>
           <BrowserRouter>
             {
               this.state.isLoggedIn ?
@@ -77,7 +77,7 @@ class App extends React.Component {
                     <Route path={"/stores-List/:id"} component= {Shop} exact= {true}/>
                   </div>
                   :
-                  <div>
+                  <div className={"main"}>
                     <Route path={"/"} component={LoginPage} exact={true}/>
                     <Route path={"/SignUp"} component={SignUp} exact={true}/>
                   </div>

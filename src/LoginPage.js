@@ -54,27 +54,32 @@ class LoginPage extends React.Component {
 
     render() {
         return (
-            <div >
+            <div className={"loginAndSignIn"}>
                 <div className={"title"}>
                     Enter your login credentials
                 </div>
-                <input className={"button"}
-                       onChange={this.onUsernameChange}
-                       value={this.state.username}
-                       placeholder={"Enter username"}
-                />
-                <input className={"button"}
-                       onChange={this.onPasswordChange}
-                       value={this.state.password}
-                       placeholder={"Enter password"}
-                />
-                <button className={"button"} onClick={this.login}>Login</button>
+                <div >
+                    <text>
+                            <input className={"input"}
+                                   onChange={this.onUsernameChange}
+                                   value={this.state.username}
+                                   placeholder={"Enter username"}
+                            />
+                            <input className={"input"}
+                                   onChange={this.onPasswordChange}
+                                   value={this.state.password}
+                                   placeholder={"Enter password"}
+                            />
+                    </text>
+                    <text>
+                        <button className={"button"} onClick={this.login}>Login</button>
+                    </text>
+                </div>
                 <div className={"showError"}>
                     {
                         this.state.showError
                     }
                 </div>
-
                 <div>
                     <NavLink to={"/signUp"} className={"link"} activeClassName={"active"}>
                         <button className={"button"} >Go to signUp</button>
