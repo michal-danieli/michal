@@ -20,27 +20,32 @@ class App extends React.Component {
     token: "",
     newUser: false,
     shopList: [],
-    messageFromServer : "",
-    messageFromServer2: ""
+    saleStarted : "",
+    saleEnded: ""
   }
 
   componentDidMount() {
     const cookies = new Cookies();
+    const token = cookies.get("logged_in")
     if (cookies.get("logged_in")) {
       this.setState({
         isLoggedIn: true,
-        token: cookies.get("logged_in")
+        token: token
       })
-
     }
-
-    const ws = new WebSocket("ws://localhost:8989/stream?token="+this.state.token);
+    const ws = new WebSocket("ws://localhost:8989/stream?token="+token);
     ws.onmessage = (message) =>{
         const data = JSON.parse(message.data)
+        const saleStarted = data.start
+        const saleEnded = data.end
         this.setState({
-            messageFromServer : data.start,
-            messageFromServer2 : data.end.value
+            saleStarted : saleStarted,
+            saleEnded : saleEnded
         })
+        if (saleStarted !=null)
+            alert(saleStarted)
+        if (saleEnded != null)
+            alert(saleEnded)
     }
     this.getAllStores()
   }
@@ -62,7 +67,7 @@ class App extends React.Component {
             {
               this.state.isLoggedIn ?
                   <div style={{display: "flex", alignItems: "start", marginTop: "50px"}}>
-                    <NavigationBar/>
+                      <NavigationBar/>
                     <Route path={"/"} component={HomePage} exact={true}/>
                     <Route path={"/home-page"} component={HomePage} exact={true}/>
                     <Route path={"/stores-List"} component={StoresList} exact={true}/>
@@ -78,12 +83,6 @@ class App extends React.Component {
                   </div>
             }
           </BrowserRouter>
-            <div>
-                message from server:
-                {this.state.messageFromServer}
-                {this.state.messageFromServer2}
-            </div>
-
         </div>
     )
   }
