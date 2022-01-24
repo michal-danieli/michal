@@ -54,7 +54,7 @@ class Shop extends React.Component {
                 {
                     this.state.sales.map(sale =>{
                         return(
-                            <SaleComponent sale={sale}/>
+                            <SaleComponent sale={sale} class={"sale"}/>
 
                         )
                     })

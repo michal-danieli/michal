@@ -59,18 +59,20 @@ class LoginPage extends React.Component {
                     Enter your login credentials
                 </div>
                 <div >
-                    <text>
+                    <div>
                             <input className={"input"}
                                    onChange={this.onUsernameChange}
                                    value={this.state.username}
                                    placeholder={"Enter username"}
                             />
+                    </div>
+                    <div>
                             <input className={"input"}
                                    onChange={this.onPasswordChange}
                                    value={this.state.password}
                                    placeholder={"Enter password"}
                             />
-                    </text>
+                    </div>
                     <text>
                         <button className={"button"} onClick={this.login}>Login</button>
                     </text>

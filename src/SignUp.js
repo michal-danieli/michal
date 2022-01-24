@@ -25,25 +25,35 @@ class SignUp extends React.Component {
     }
 
     SignUp = () => {
-        let data = new FormData();
-        data.append("username", this.state.username)
-        data.append("password", this.state.password)
-        axios.post("http://localhost:8989/create-account", data)
-            .then((response) => {
-                if (response.data && response.data!= "usernameExist") {
-                    this.setState({
-                        showError: "the user create, now go to login in our site!",
-                        success: true
-                    })
-                    const cookies = new Cookies();
-                    cookies.set("logged_in", response.data);
-                    window.location.replace("http://localhost:3001/Settings")
-                } else {
-                    this.setState({
-                        showError: "the username exist - change your username!"
-                    })
-                }
+        if(this.state.username == "" || this.state.password == ""){
+            this.setState({
+                showError: "You can't sing up with empty username or password!"
             })
+        }
+        else{
+            let data = new FormData();
+            data.append("username", this.state.username)
+            data.append("password", this.state.password)
+            axios.post("http://localhost:8989/create-account", data)
+                .then((response) => {
+                    if (response.data && response.data!= "usernameExist") {
+                        this.setState({
+                            showError: "the user create, now go to login in our site!",
+                            success: true
+                        })
+                        const cookies = new Cookies();
+                        cookies.set("logged_in", response.data);
+                        const port = window.location.port;
+                        const replace = "http://localhost:"+port+"/Settings";
+                        window.location.replace(replace)
+                    } else {
+                        this.setState({
+                            showError: "the username exist - change your username!"
+                        })
+                    }
+                })
+        }
+
     }
 
 
@@ -55,16 +65,20 @@ class SignUp extends React.Component {
                     Enter Password & Username to sign-up
                 </div>
                 <div >
-                    <input className={"input"}
-                           onChange={this.onUsernameChange}
-                           value={this.state.username}
-                           placeholder={"Enter username"}
-                    />
-                    <input className={"input"}
-                           onChange={this.onPasswordChange}
-                           value={this.state.password}
-                           placeholder={"Enter password"}
-                    />
+                    <div>
+                        <input className={"input"}
+                               onChange={this.onUsernameChange}
+                               value={this.state.username}
+                               placeholder={"Enter username"}
+                        />
+                    </div>
+                    <div>
+                        <input className={"input"}
+                               onChange={this.onPasswordChange}
+                               value={this.state.password}
+                               placeholder={"Enter password"}
+                        />
+                    </div>
                     {/*<NavLink to={"/Settings"} className={"link"} activeClassName={"active"}>*/}
                         <button className={"button"} onClick={this.SignUp}>sign-up</button>
                     {/*</NavLink>*/}

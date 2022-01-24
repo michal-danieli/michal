@@ -36,19 +36,29 @@ class homePage extends React.Component {
                 </div>
                 <div>
                     {
-                        this.state.sales.map(sale =>{
-                            return(
-                                <div>
-                                    <div className={"homePageSale"}>
-                                        <text className={"shopName"}>
-                                            {sale.shop.name}
-                                        </text>
-                                        <SaleComponent sale = {sale} class={"sale"}/>
-                                    </div>
-                                </div>
-                            )
-                          }
-                        )
+                        this.state.sales.length == 0
+                            ?
+                            <div>
+                                You Don't Have Any Sales :(
+                            </div>
+                            :
+                            <div>
+                                {
+                                    this.state.sales.map(sale =>{
+                                            return(
+                                                <div>
+                                                    <div className={"homePageSale"}>
+                                                        <text className={"shopName"}>
+                                                            {sale.shop.name}
+                                                        </text>
+                                                        <SaleComponent sale = {sale} class={"sale"}/>
+                                                    </div>
+                                                </div>
+                                            )
+                                        }
+                                    )
+                                }
+                            </div>
                     }
                 </div>
             </div>
