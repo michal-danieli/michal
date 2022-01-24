@@ -77,7 +77,7 @@ class Settings extends React.Component {
                     Settings Page
                 </div>
                 <fieldset>
-                    <legend className={"organizations"}>Select the organizations of which you are friends</legend>
+                    <legend className={"organizations"}>Select the organizations of which you are a member</legend>
                     {
                         this.state.organ.map((org) => {
                             return (

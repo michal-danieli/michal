@@ -8,6 +8,12 @@ body{
 .main{
 }
 
+.time{
+  color: black;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
 .shopLink{
   color: blue;
   width: border-box;
@@ -166,9 +172,9 @@ body{
 
 .saleDescription{
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-  font-weight: bold;
+  font-family: Arial;
 }
 
 .navigationBar{
