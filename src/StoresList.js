@@ -39,8 +39,12 @@ class storesList extends React.Component {
                 <div className={"componentTitle"}>
                     Shop List
                 </div>
-
                 {
+                    this.state.shopList.length == 0 ?
+                    <div>
+                        There Is No Shops :(
+                    </div>
+                    :
                     this.state.shopList.map(shop =>{
                         return(
                             <NavLink to={"stores-List/" + shop.id} className={"link"} activeClassName={"active"}>
